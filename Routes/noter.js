@@ -22,6 +22,7 @@ router.get("/", (req, res, next) => {
               Updated: doc.Updated,
               Comments: doc.Comments,
               Image: doc.Image,
+              Likes:doc.Likes
             };
         }),
       };
