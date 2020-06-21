@@ -13,17 +13,6 @@ router.get("/", (req, res, next) => {
       const response = {
         count: docs.length,
         notes: docs.map((doc) => {
-          if (Comments == null)
-            return {
-              _id: doc._id,
-              Title: doc.Title,
-              Body: doc.Body,
-              Preference: doc.Preference,
-              Created: doc.Created,
-              Updated: doc.Updated,
-              Image: doc.Image,
-            };
-          else {
             return {
               _id: doc._id,
               Title: doc.Title,
@@ -34,7 +23,6 @@ router.get("/", (req, res, next) => {
               Comments: doc.Comments,
               Image: doc.Image,
             };
-          }
         }),
       };
       console.log(docs);
