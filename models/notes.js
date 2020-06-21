@@ -37,7 +37,7 @@ const notesSchema = new mongoose.Schema({
     type: Array,
     default: "Comment 1",
   },
-  Likes{
+  Likes:{
   type:Number,
   default:0
 },
