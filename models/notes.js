@@ -37,6 +37,10 @@ const notesSchema = new mongoose.Schema({
     type: Array,
     default: "Comment 1",
   },
+  Likes{
+  type:Number,
+  default:0
+},
   Image: {
     type: String,
     default:
