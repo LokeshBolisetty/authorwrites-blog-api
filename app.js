@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const router = require("./Routes/noter");
 const nameRoutes = require("./Routes/name");
 const commentRoutes = require("./Routes/comments");
-const cors = require("cors");
 
 mongoose.connect(
   "mongodb+srv://Lokesh:Stbemhs@blogdata-y4ixx.mongodb.net/BlogData?retryWrites=true&w=majority",
@@ -17,7 +16,6 @@ mongoose.connect(
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
-app.use(cors());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
