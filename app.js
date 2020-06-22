@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const router = require("./Routes/noter");
 const nameRoutes = require("./Routes/name");
 const commentRoutes = require("./Routes/comments");
+const cors = require("cors");
 
 mongoose.connect(
   "mongodb+srv://Lokesh:Stbemhs@blogdata-y4ixx.mongodb.net/BlogData?retryWrites=true&w=majority",
