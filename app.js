@@ -4,7 +4,9 @@ const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
 const router = require("./Routes/noter");
 const nameRoutes = require("./Routes/name");
+const userRoutes = require("./Routes/user");
 const commentRoutes = require("./Routes/comments");
+const loginRoute = require("./Routes/login");
 const cors = require("cors");
 
 mongoose.connect(
@@ -34,5 +36,7 @@ app.use((req, res, next) => {
 app.use("/", router);
 app.use("/names", nameRoutes);
 app.use("/comments", commentRoutes);
+app.use("/signup", userRoutes);
+app.use("/login", loginRoute);
 
 module.exports = app;

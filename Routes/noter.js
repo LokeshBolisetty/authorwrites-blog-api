@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const notes = require("../models/notes");
+const checkAuth = require("./check-auth");
 
 //To view all the notes that are saved
 router.get("/", (req, res, next) => {
@@ -13,17 +14,17 @@ router.get("/", (req, res, next) => {
       const response = {
         count: docs.length,
         notes: docs.map((doc) => {
-            return {
-              _id: doc._id,
-              Title: doc.Title,
-              Body: doc.Body,
-              Preference: doc.Preference,
-              Created: doc.Created,
-              Updated: doc.Updated,
-              Comments: doc.Comments,
-              Image: doc.Image,
-              Likes:doc.Likes
-            };
+          return {
+            _id: doc._id,
+            Title: doc.Title,
+            Body: doc.Body,
+            Preference: doc.Preference,
+            Created: doc.Created,
+            Updated: doc.Updated,
+            Comments: doc.Comments,
+            Image: doc.Image,
+            Likes: doc.Likes,
+          };
         }),
       };
       console.log(docs);
@@ -34,7 +35,7 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", checkAuth, (req, res, next) => {
   const note = new notes({
     _id: new mongoose.Types.ObjectId(),
     Title: req.body.Title,
@@ -85,7 +86,7 @@ router.patch('/:noteid', (req, res, next) => {
             })
         });
 });*/
-router.patch("/:noteid", (req, res, next) => {
+router.patch("/:noteid", checkAuth, (req, res, next) => {
   const id = req.params.noteid;
   const updateops = {};
   for (const ops of req.body) {
@@ -135,7 +136,7 @@ router.get("/:noteid", (req, res, next) => {
     });
 });
 
-router.delete("/:noteid", (req, res, next) => {
+router.delete("/:noteid", checkAuth, (req, res, next) => {
   const id = req.params.noteid;
   notes
     .remove({ _id: id })
